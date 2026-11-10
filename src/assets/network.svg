@@ -1,0 +1,37 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+  <g stroke="#94a3b8" stroke-width="2" opacity=".35">
+    <path d="M-40 150 L70 85 L180 150 L180 280 L70 345 L-40 280Z"></path>
+    <path d="M70 85 L70 0 M180 150 L270 100 L380 165 L380 295 L270 360 L180 295"></path>
+    <path d="M-20 420 L100 350 L220 420 L220 560 L100 630 L-20 560Z"></path>
+    <path d="M220 420 L330 355 L440 420 L440 550 L330 615 L220 550"></path>
+    <path d="M330 615 L440 550 L550 615 L550 745 L440 810 L330 745Z"></path>
+    <path d="M440 810 L550 745 L660 810 L660 940"></path>
+    <path d="M-30 780 L80 715 L190 780 L190 910 L80 975 L-30 910Z"></path>
+    <path d="M1150 0 L1260 65 L1260 195 L1150 260 L1040 195"></path>
+    <path d="M1260 65 L1370 0 L1480 65 L1480 195 L1370 260 L1260 195"></path>
+    <path d="M1370 260 L1480 195 L1590 260 L1590 390 L1480 455 L1370 390Z"></path>
+    <path d="M1190 650 L1300 585 L1410 650 L1410 780 L1300 845 L1190 780Z"></path>
+    <path d="M1410 650 L1520 585 L1630 650 L1630 780 L1520 845 L1410 780"></path>
+    <path d="M1050 800 L1160 735 L1270 800 L1270 930"></path>
+  </g>
+
+  <g fill="#94a3b8" opacity=".5">
+    <circle cx="70" cy="85" r="5"></circle>
+    <circle cx="180" cy="150" r="5"></circle>
+    <circle cx="270" cy="100" r="4"></circle>
+    <circle cx="380" cy="165" r="5"></circle>
+    <circle cx="100" cy="350" r="5"></circle>
+    <circle cx="220" cy="420" r="5"></circle>
+    <circle cx="330" cy="615" r="5"></circle>
+    <circle cx="440" cy="550" r="5"></circle>
+    <circle cx="550" cy="745" r="5"></circle>
+    <circle cx="80" cy="715" r="5"></circle>
+    <circle cx="1260" cy="65" r="5"></circle>
+    <circle cx="1370" cy="260" r="5"></circle>
+    <circle cx="1480" cy="195" r="5"></circle>
+    <circle cx="1300" cy="585" r="5"></circle>
+    <circle cx="1410" cy="650" r="5"></circle>
+    <circle cx="1520" cy="585" r="5"></circle>
+  </g>
+</svg>

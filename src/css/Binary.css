@@ -1,0 +1,287 @@
+
+/* ========================================
+   BINARY TO IPV4 CONVERTER
+======================================== */
+
+/* HEADER */
+
+.binary-ipv4-calculator .binary-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.binary-heading-icon {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.binary-heading-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.binary-heading-text h2,
+.binary-heading-text p {
+  margin: 0;
+}
+
+.binary-heading-text p {
+  line-height: 1.5;
+}
+
+/* INPUT LABEL */
+
+.binary-input-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.binary-input-label svg {
+  flex-shrink: 0;
+  color: #2563eb;
+}
+
+/* CONVERT BUTTON */
+
+.binary-convert-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.binary-convert-button svg {
+  flex-shrink: 0;
+}
+
+/* INPUT NOTE */
+
+.binary-form-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  line-height: 1.5;
+}
+
+.binary-form-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ERROR */
+
+.binary-error {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.binary-error svg {
+  flex-shrink: 0;
+}
+
+/* RESULT HEADING */
+
+.binary-result-heading,
+.binary-breakdown-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.binary-result-heading svg,
+.binary-breakdown-heading svg {
+  flex-shrink: 0;
+  color: #2563eb;
+}
+
+/* MAIN IPV4 RESULT */
+
+.binary-ipv4-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.binary-ipv4-result-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.binary-ipv4-result-label svg {
+  flex-shrink: 0;
+  color: #2563eb;
+}
+
+.binary-ipv4-highlight strong {
+  color: #1d4ed8;
+  font-size: 24px;
+  overflow-wrap: anywhere;
+}
+
+/* OCTET RESULTS */
+
+.binary-ipv4-calculator .extra-result-item {
+  min-width: 0;
+}
+
+.binary-ipv4-calculator .extra-result-item strong {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* RESET BUTTON */
+
+.binary-reset-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.binary-reset-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.binary-reset-button:hover {
+  background: #f1f5f9;
+}
+
+.binary-reset-button svg {
+  flex-shrink: 0;
+}
+
+/* DARK MODE */
+
+[data-theme="dark"] .binary-heading-icon {
+  background: #1e3a5f;
+  color: #93c5fd;
+}
+
+/* Keep result boxes white in dark mode */
+
+[data-theme="dark"] .binary-ipv4-highlight {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+[data-theme="dark"] .binary-ipv4-highlight strong {
+  color: #1d4ed8;
+}
+
+[data-theme="dark"] .binary-ipv4-result-label {
+  color: #475569;
+}
+
+[data-theme="dark"] .binary-reset-button {
+  background: #ffffff;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+
+/* ========================================
+   DARK MODE - KEEP ICON COLORS
+======================================== */
+
+[data-theme="dark"] .binary-heading-icon {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+[data-theme="dark"] .binary-input-label svg {
+  color: #2563eb !important;
+}
+
+[data-theme="dark"] .binary-convert-button svg {
+  color: inherit;
+}
+
+[data-theme="dark"] .binary-result-heading svg {
+  color: #2563eb !important;
+}
+
+[data-theme="dark"] .binary-ipv4-highlight svg {
+  color: #2563eb !important;
+}
+
+/* Keep icon alignment in dark mode */
+.binary-heading-icon,
+.binary-input-label,
+.binary-convert-button,
+.binary-result-heading,
+.binary-ipv4-highlight,
+.binary-reset-button {
+  display: flex;
+  align-items: center;
+}
+
+.binary-heading-icon svg,
+.binary-input-label svg,
+.binary-convert-button svg,
+.binary-result-heading svg,
+.binary-ipv4-highlight svg,
+.binary-reset-button svg {
+  flex-shrink: 0;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .binary-ipv4-calculator .binary-heading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .binary-heading-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .binary-heading-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .binary-ipv4-highlight {
+    padding: 14px;
+  }
+
+  .binary-ipv4-highlight strong {
+    font-size: 21px;
+  }
+
+  .binary-convert-button {
+    gap: 7px;
+  }
+}

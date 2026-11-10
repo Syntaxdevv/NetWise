@@ -1,0 +1,29 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#94a3b8" opacity=".5"></circle>
+    </pattern>
+    <g id="cube" fill="none" stroke="#94a3b8" stroke-width="2" opacity=".35">
+      <path d="M0 30 50 0 100 30 50 60Z"></path>
+      <path d="M0 30v60l50 30V60"></path>
+      <path d="M100 30v60l-50 30"></path>
+      <path d="M50 60v60"></path>
+    </g>
+  </defs>
+
+  <rect width="1200" height="1200" fill="url(#dots)"></rect>
+
+  <g>
+    <use href="#cube" x="-50" y="40"></use>
+    <use href="#cube" x="1080" y="-10"></use>
+    <use href="#cube" x="-50" y="350"></use>
+    <use href="#cube" x="0" y="500"></use>
+    <use href="#cube" x="100" y="650"></use>
+    <use href="#cube" x="0" y="800"></use>
+    <use href="#cube" x="220" y="850"></use>
+    <use href="#cube" x="350" y="1000"></use>
+    <use href="#cube" x="1080" y="300"></use>
+    <use href="#cube" x="1000" y="950"></use>
+  </g>
+</svg>

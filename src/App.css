@@ -1,0 +1,149 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0b1220;
+  animation: loadingFadeOut 0.4s ease 2.1s forwards;
+}
+
+.loading-content {
+  width: 100%;
+  max-width: 380px;
+  padding: 25px;
+  text-align: center;
+}
+
+.loading-owl {
+  width: 230px;
+  height: 230px;
+  object-fit: contain;
+  animation: owlFloat 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 22px rgba(37, 99, 235, 0.3));
+}
+
+.loading-logo {
+  margin: 12px 0 4px;
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.loading-logo span {
+  color: #3b82f6;
+}
+
+.loading-subtitle {
+  color: #94a3b8;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.loading-progress {
+  width: 220px;
+  height: 5px;
+  margin: 28px auto 14px;
+  background: #26364f;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.loading-progress-bar {
+  width: 40%;
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 20px;
+  animation: progressLoading 2.2s ease-in-out forwards;
+}
+
+.loading-message {
+  color: #93c5fd;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+.app-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.app-visible {
+  opacity: 1;
+  visibility: visible;
+  animation: appFadeIn 0.5s ease;
+}
+
+@keyframes owlFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes progressLoading {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes loadingFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@keyframes appFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-owl,
+  .loading-progress-bar {
+    animation: none;
+  }
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] #root {
+  background-color: #171c27 !important;
+  background-image: radial-gradient(
+    circle,
+    rgba(148, 163, 184, 0.35) 1px,
+    transparent 1px
+  ) !important;
+  background-size: 24px 24px !important;
+  background-position: 0 0;
+}
+
+html[data-theme="dark"] .navbar {
+  background: #171c27 !important;
+  border-bottom: 1px solid #30394a !important;
+}

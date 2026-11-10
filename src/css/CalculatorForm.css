@@ -1,0 +1,146 @@
+
+.calculator-form {
+  min-width: 0;
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 28px;
+}
+
+.section-number {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  color: #2563eb;
+  background: #eff6ff;
+  border-radius: 9px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.section-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  min-width: 43px;
+  color: #2563eb;
+  background: #eff6ff;
+  border-radius: 12px;
+}
+
+.panel-heading h2 {
+  margin-bottom: 4px;
+  color: #172033;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.panel-heading p {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 23px;
+}
+
+.form-field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.form-field label svg {
+  flex-shrink: 0;
+  color: #2563eb;
+  stroke-width: 1.9;
+}
+
+.form-field input {
+  width: 100%;
+  height: 46px;
+  padding: 0 13px;
+  color: #172033;
+  background: #ffffff;
+  border: 1px solid #d6e0ec;
+  border-radius: 8px;
+  outline: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  transition: 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-field input::placeholder {
+  color: #94a3b8;
+  font-family: "Inter", sans-serif;
+}
+
+.form-field input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
+}
+
+.input-hint {
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.calculator-form .calculate-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 5px;
+  color: #ffffff;
+  background: #2563eb;
+  border: none;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calculator-form .calculate-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.18);
+}
+
+.calculator-form .calculate-button svg {
+  flex-shrink: 0;
+  stroke-width: 2;
+}
+
+.calculator-form .calculate-button span {
+  font-size: 17px;
+}
+
+@media (max-width: 480px) {
+  .calculator-form {
+    padding: 17px;
+  }
+}
