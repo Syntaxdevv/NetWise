@@ -1,75 +1,64 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# NetWise
 
-Currently, two official plugins are available:
+A web-based networking tool designed to simplify IPv4 subnetting and network calculations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+NetWise provides useful subnetting calculators with clear and organized results, making network computations easier to understand.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **IPv4 Calculator** – Calculate network information using IPv4 addresses and CIDR notation.
+- **Subnet Calculator** – Generate subnet information based on different calculation modes.
+- **VLSM Calculator** – Divide a network into multiple subnets based on required host counts.
+- **Network Information** – View network address, subnet mask, broadcast address, and host ranges.
+- **Dark Mode** – Switch between light and dark themes.
+- **Responsive Interface** – Use the application on different screen sizes.
 
-## Expanding the ESLint configuration
+## Built With
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React
+- TypeScript
+- Vite
+- CSS
+- Lucide React
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Clone the repository:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/Syntaxdevv/NetWise.git
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Navigate to the project directory:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cd NetWise
 ```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## Build
+
+To build the project for production:
+
+```bash
+npm run build
+```
+
+## Project
+
+**NetWise**  
+Developed by [Syntaxdevv](https://github.com/Syntaxdevv)
+
+GitHub Repository: https://github.com/Syntaxdevv/NetWise
