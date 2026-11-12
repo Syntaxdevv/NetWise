@@ -61,4 +61,6 @@ npm run build
 **NetWise**  
 Developed by [Syntaxdevv](https://github.com/Syntaxdevv)
 
-GitHub Repository: https://github.com/Syntaxdevv/NetWise
+## 📄 License
+
+NETWISE is a personal networking calculator project. Feel free to explore the code, but please don't copy or reuse the original design without permission. Thanks for respecting my work!
