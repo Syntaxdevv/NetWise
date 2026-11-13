@@ -33,8 +33,6 @@
   line-height: 1.5;
 }
 
-/* INPUT LABEL */
-
 .binary-input-label {
   display: flex;
   align-items: center;
@@ -59,7 +57,6 @@
   flex-shrink: 0;
 }
 
-/* INPUT NOTE */
 
 .binary-form-note {
   display: flex;
@@ -85,8 +82,6 @@
   flex-shrink: 0;
 }
 
-/* RESULT HEADING */
-
 .binary-result-heading,
 .binary-breakdown-heading {
   display: flex;
@@ -99,8 +94,6 @@
   flex-shrink: 0;
   color: #2563eb;
 }
-
-/* MAIN IPV4 RESULT */
 
 .binary-ipv4-highlight {
   display: flex;
@@ -130,8 +123,6 @@
   overflow-wrap: anywhere;
 }
 
-/* OCTET RESULTS */
-
 .binary-ipv4-calculator .extra-result-item {
   min-width: 0;
 }
@@ -141,7 +132,6 @@
   word-break: break-word;
 }
 
-/* RESET BUTTON */
 
 .binary-reset-container {
   display: flex;
@@ -173,14 +163,11 @@
   flex-shrink: 0;
 }
 
-/* DARK MODE */
 
 [data-theme="dark"] .binary-heading-icon {
   background: #1e3a5f;
   color: #93c5fd;
 }
-
-/* Keep result boxes white in dark mode */
 
 [data-theme="dark"] .binary-ipv4-highlight {
   background: #eff6ff;
@@ -200,10 +187,6 @@
   color: #334155;
   border-color: #cbd5e1;
 }
-
-/* ========================================
-   DARK MODE - KEEP ICON COLORS
-======================================== */
 
 [data-theme="dark"] .binary-heading-icon {
   background: #eff6ff !important;
@@ -245,9 +228,6 @@
 .binary-reset-button svg {
   flex-shrink: 0;
 }
-
-
-/* MOBILE */
 
 @media (max-width: 480px) {
   .binary-ipv4-calculator .binary-heading {
