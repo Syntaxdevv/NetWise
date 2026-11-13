@@ -16,7 +16,6 @@ NetWise provides useful subnetting calculators with clear and organized results,
 
 ## Built With
 
-- React
 - TypeScript
 - Vite
 - CSS
