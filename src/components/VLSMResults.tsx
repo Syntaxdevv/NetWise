@@ -1,4 +1,3 @@
-
 import { GitBranch } from "lucide-react";
 import type { CalculationResult } from "../types/subnet";
 
@@ -11,9 +10,7 @@ interface Props {
 function getMagicNumber(subnetMask: string): number {
   const octets = subnetMask.split(".").map(Number);
 
-  const interestingOctet = octets.find(
-    (octet) => octet !== 255
-  );
+  const interestingOctet = octets.find((octet) => octet !== 255);
 
   if (interestingOctet === undefined) {
     return 0;
@@ -22,11 +19,7 @@ function getMagicNumber(subnetMask: string): number {
   return 256 - interestingOctet;
 }
 
-function VLSMResults({
-  results,
-  subnetNames,
-  originalCidr,
-}: Props) {
+function VLSMResults({ results, subnetNames, originalCidr }: Props) {
   if (!results || results.subnets.length === 0) {
     return (
       <section className="vlsm-empty-state">
@@ -37,13 +30,12 @@ function VLSMResults({
         <h3>No VLSM Results Yet</h3>
 
         <p>
-          Your subnet allocation results will appear here
-          after you calculate your VLSM.
+          Your subnet allocation results will appear here after you calculate
+          your VLSM.
         </p>
 
         <span className="vlsm-empty-hint">
-          Configure your network and add subnet requirements
-          to get started.
+          Configure your network and add subnet requirements to get started.
         </span>
       </section>
     );
@@ -65,9 +57,7 @@ function VLSMResults({
       <div className="vlsm-result-list">
         {results.subnets.map((subnet, index) => {
           const borrowedBits = subnet.cidr - originalCidr;
-          const magicNumber = getMagicNumber(
-            subnet.subnetMask
-          );
+          const magicNumber = getMagicNumber(subnet.subnetMask);
 
           return (
             <div
@@ -77,10 +67,7 @@ function VLSMResults({
               <div className="vlsm-result-card-heading">
                 <h3>
                   {subnetNames[index] || `LAN${index + 1}`}
-                  <span>
-                    {" "}
-                    ({subnet.requiredHosts} hosts needed)
-                  </span>
+                  <span> ({subnet.requiredHosts} hosts needed)</span>
                 </h3>
 
                 <span>Subnet {index + 1}</span>

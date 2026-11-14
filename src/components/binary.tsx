@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "../css/ExtraCalculator.css";
 import "../css/CalculatorShared.css";
@@ -21,12 +20,9 @@ interface ConversionResult {
 }
 
 function BinaryConverter() {
-  const [input, setInput] = useState(
-    "11000000.10101000.00001010.00011001"
-  );
+  const [input, setInput] = useState("11000000.10101000.00001010.00011001");
 
-  const [result, setResult] =
-    useState<ConversionResult | null>(null);
+  const [result, setResult] = useState<ConversionResult | null>(null);
 
   const [error, setError] = useState("");
 
@@ -35,24 +31,19 @@ function BinaryConverter() {
       const binary = input.trim().replace(/[\s.]/g, "");
 
       if (!/^[01]+$/.test(binary)) {
-        throw new Error(
-          "Binary address must contain only 0 and 1."
-        );
+        throw new Error("Binary address must contain only 0 and 1.");
       }
 
       if (binary.length !== 32) {
-        throw new Error(
-          "Binary IPv4 address must contain exactly 32 bits."
-        );
+        throw new Error("Binary IPv4 address must contain exactly 32 bits.");
       }
 
-      const octets = Array.from(
-        { length: 4 },
-        (_, index) => binary.slice(index * 8, index * 8 + 8)
+      const octets = Array.from({ length: 4 }, (_, index) =>
+        binary.slice(index * 8, index * 8 + 8),
       );
 
       const decimalOctets = octets.map((octet) =>
-        parseInt(octet, 2).toString()
+        parseInt(octet, 2).toString(),
       );
 
       const ipv4 = decimalOctets.join(".");
@@ -66,11 +57,7 @@ function BinaryConverter() {
       setError("");
     } catch (err) {
       setResult(null);
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Conversion failed."
-      );
+      setError(err instanceof Error ? err.message : "Conversion failed.");
     }
   }
 
@@ -89,17 +76,12 @@ function BinaryConverter() {
 
         <div className="binary-heading-text">
           <h2>Binary to IPv4</h2>
-          <p>
-            Convert 32-bit binary addresses into readable IPv4 addresses.
-          </p>
+          <p>Convert 32-bit binary addresses into readable IPv4 addresses.</p>
         </div>
       </div>
 
       <div className="extra-calculator-form">
-        <label
-          htmlFor="binary-ipv4-input"
-          className="binary-input-label"
-        >
+        <label htmlFor="binary-ipv4-input" className="binary-input-label">
           <BinaryIcon size={17} />
           <span>Binary IPv4 Address</span>
         </label>
@@ -129,7 +111,8 @@ function BinaryConverter() {
       <div className="form-note binary-form-note">
         <Info size={16} />
         <span>
-          Enter exactly 32 binary digits. Spaces or dots between octets are allowed.
+          Enter exactly 32 binary digits. Spaces or dots between octets are
+          allowed.
         </span>
       </div>
 
@@ -199,13 +182,7 @@ function BinaryConverter() {
   );
 }
 
-function Result({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
+function Result({ label, value }: { label: string; value: string }) {
   return (
     <div className="extra-result-item">
       <span>{label}</span>

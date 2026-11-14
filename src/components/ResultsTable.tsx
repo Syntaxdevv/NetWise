@@ -33,23 +33,16 @@ function getIpClass(ip: string): {
 function getMagicNumber(mask: string): number {
   const octets = mask.split(".").map(Number);
 
-  const partialOctet = octets.find(
-    (octet) => octet !== 255 && octet !== 0
-  );
+  const partialOctet = octets.find((octet) => octet !== 255 && octet !== 0);
 
-  return partialOctet === undefined
-    ? 256
-    : 256 - partialOctet;
+  return partialOctet === undefined ? 256 : 256 - partialOctet;
 }
 
 function getValidSubnets(
   subnets: CalculationResult["subnets"],
-  prefix: number
+  prefix: number,
 ): string {
-  const octetIndex = Math.min(
-    Math.floor(prefix / 8),
-    3
-  );
+  const octetIndex = Math.min(Math.floor(prefix / 8), 3);
 
   return subnets
     .map((subnet) => {
@@ -81,17 +74,11 @@ function ResultsTable({ results }: Props) {
 
   const ipClass = getIpClass(results.baseNetwork);
 
-  const borrowedBits =
-    results.newCidr - ipClass.defaultPrefix;
+  const borrowedBits = results.newCidr - ipClass.defaultPrefix;
 
-  const magicNumber = getMagicNumber(
-    results.newSubnetMask
-  );
+  const magicNumber = getMagicNumber(results.newSubnetMask);
 
-  const validSubnets = getValidSubnets(
-    results.subnets,
-    results.newCidr
-  );
+  const validSubnets = getValidSubnets(results.subnets, results.newCidr);
 
   return (
     <section className="results-section">
@@ -125,23 +112,17 @@ function ResultsTable({ results }: Props) {
 
             <div className="summary-card">
               <span>Total Number of Subnets</span>
-              <strong>
-                {results.subnetsAvailable.toLocaleString()}
-              </strong>
+              <strong>{results.subnetsAvailable.toLocaleString()}</strong>
             </div>
 
             <div className="summary-card">
               <span>Total Number of Hosts</span>
-              <strong>
-                {results.blockSize.toLocaleString()}
-              </strong>
+              <strong>{results.blockSize.toLocaleString()}</strong>
             </div>
 
             <div className="summary-card">
               <span>Total Usable Hosts/Subnet</span>
-              <strong>
-                {results.usableHostsPerSubnet.toLocaleString()}
-              </strong>
+              <strong>{results.usableHostsPerSubnet.toLocaleString()}</strong>
             </div>
 
             <div className="summary-card">
@@ -155,8 +136,8 @@ function ResultsTable({ results }: Props) {
           <div className="table-heading">
             <h3>Table Details</h3>
             <span>
-              Showing {results.subnets.length} of{" "}
-              {results.subnetsAvailable} subnets
+              Showing {results.subnets.length} of {results.subnetsAvailable}{" "}
+              subnets
             </span>
           </div>
 
@@ -211,24 +192,20 @@ function ResultsTable({ results }: Props) {
 
             <div className="summary-card">
               <span>Total Number of Subnets (inside base)</span>
-              <strong>
-                {results.subnetsAvailable.toLocaleString()}
-              </strong>
+              <strong>{results.subnetsAvailable.toLocaleString()}</strong>
             </div>
 
             <div className="summary-card">
               <span>Usable Hosts per Subnet</span>
-              <strong>
-                {results.usableHostsPerSubnet.toLocaleString()}
-              </strong>
+              <strong>{results.usableHostsPerSubnet.toLocaleString()}</strong>
             </div>
           </div>
 
           <div className="table-heading">
             <h3>Table Details</h3>
             <span>
-              Showing {results.subnets.length} of{" "}
-              {results.subnetsAvailable} subnets
+              Showing {results.subnets.length} of {results.subnetsAvailable}{" "}
+              subnets
             </span>
           </div>
 
@@ -259,9 +236,7 @@ function ResultsTable({ results }: Props) {
                     <td>{subnet.firstHost}</td>
                     <td>{subnet.lastHost}</td>
                     <td>{subnet.broadcastAddress}</td>
-                    <td>
-                      {subnet.usableHosts.toLocaleString()}
-                    </td>
+                    <td>{subnet.usableHosts.toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
@@ -273,9 +248,7 @@ function ResultsTable({ results }: Props) {
           <div className="summary-grid">
             <div className="summary-card">
               <span>Borrowed Bits</span>
-              <strong>
-                {results.newCidr - results.baseCidr}
-              </strong>
+              <strong>{results.newCidr - results.baseCidr}</strong>
             </div>
 
             <div className="summary-card">
@@ -302,24 +275,20 @@ function ResultsTable({ results }: Props) {
 
             <div className="summary-card">
               <span>Actual Networks (inside base)</span>
-              <strong>
-                {results.subnetsAvailable.toLocaleString()}
-              </strong>
+              <strong>{results.subnetsAvailable.toLocaleString()}</strong>
             </div>
 
             <div className="summary-card">
               <span>Usable Hosts per Subnet</span>
-              <strong>
-                {results.usableHostsPerSubnet.toLocaleString()}
-              </strong>
+              <strong>{results.usableHostsPerSubnet.toLocaleString()}</strong>
             </div>
           </div>
 
           <div className="table-heading">
             <h3>Subnet Details</h3>
             <span>
-              Showing {results.subnets.length} of{" "}
-              {results.subnetsAvailable} subnets
+              Showing {results.subnets.length} of {results.subnetsAvailable}{" "}
+              subnets
             </span>
           </div>
 
@@ -348,9 +317,7 @@ function ResultsTable({ results }: Props) {
                     <td>{subnet.firstHost}</td>
                     <td>{subnet.lastHost}</td>
                     <td>{subnet.broadcastAddress}</td>
-                    <td>
-                      {subnet.usableHosts.toLocaleString()}
-                    </td>
+                    <td>{subnet.usableHosts.toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
@@ -360,9 +327,7 @@ function ResultsTable({ results }: Props) {
       )}
 
       {results.truncated && (
-        <p className="table-note">
-          Only the first 256 subnets are displayed.
-        </p>
+        <p className="table-note">Only the first 256 subnets are displayed.</p>
       )}
     </section>
   );

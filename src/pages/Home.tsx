@@ -1,11 +1,5 @@
-
 import { useState } from "react";
-import {
-  Network,
-  GitBranch,
-  Globe,
-  Wrench,
-} from "lucide-react";
+import { Network, GitBranch, Globe, Wrench } from "lucide-react";
 
 import Navbar from "../components/Navbar";
 import CalculatorForm from "../components/CalculatorForm";
@@ -18,33 +12,23 @@ import VLSM from "./VLSM";
 
 import { calculateSubnets } from "../utils/subnetCalculator";
 
-import type {
-  CalculationMode,
-  CalculationResult,
-} from "../types/subnet";
+import type { CalculationMode, CalculationResult } from "../types/subnet";
 
 import "../css/Home.css";
 
-type CalculatorType =
-  | "subnetting"
-  | "vlsm"
-  | "ipv4"
-  | "more-tools";
+type CalculatorType = "subnetting" | "vlsm" | "ipv4" | "more-tools";
 
 function Home() {
   const [selectedCalculator, setSelectedCalculator] =
     useState<CalculatorType>("subnetting");
 
-  const [mode, setMode] =
-    useState<CalculationMode>("regular");
+  const [mode, setMode] = useState<CalculationMode>("regular");
 
-  const [network, setNetwork] =
-    useState("192.168.10.0/24");
+  const [network, setNetwork] = useState("192.168.10.0/24");
 
   const [required, setRequired] = useState("26");
 
-  const [results, setResults] =
-    useState<CalculationResult | null>(null);
+  const [results, setResults] = useState<CalculationResult | null>(null);
 
   const [error, setError] = useState("");
 
@@ -52,27 +36,17 @@ function Home() {
     try {
       const requiredValue =
         mode === "hosts"
-          ? required
-              .split(",")
-              .map((value) => Number(value.trim()))
+          ? required.split(",").map((value) => Number(value.trim()))
           : Number(required);
 
-      const calculated = calculateSubnets(
-        network,
-        requiredValue,
-        mode
-      );
+      const calculated = calculateSubnets(network, requiredValue, mode);
 
       setResults(calculated);
       setError("");
     } catch (err) {
       setResults(null);
 
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong."
-      );
+      setError(err instanceof Error ? err.message : "Something went wrong.");
     }
   }
 
@@ -98,11 +72,7 @@ function Home() {
     if (newMode === "regular") {
       setRequired("26");
     } else if (newMode === "hosts") {
-      setRequired(
-        selectedCalculator === "vlsm"
-          ? "100, 50, 25, 10"
-          : "26"
-      );
+      setRequired(selectedCalculator === "vlsm" ? "100, 50, 25, 10" : "26");
     } else {
       setRequired("4");
     }
@@ -117,14 +87,8 @@ function Home() {
         <div className="calculator-selector">
           <button
             type="button"
-            className={
-              selectedCalculator === "subnetting"
-                ? "active"
-                : ""
-            }
-            onClick={() =>
-              handleCalculatorChange("subnetting")
-            }
+            className={selectedCalculator === "subnetting" ? "active" : ""}
+            onClick={() => handleCalculatorChange("subnetting")}
             title="Subnetting"
             aria-label="Subnetting"
           >
@@ -134,14 +98,8 @@ function Home() {
 
           <button
             type="button"
-            className={
-              selectedCalculator === "vlsm"
-                ? "active"
-                : ""
-            }
-            onClick={() =>
-              handleCalculatorChange("vlsm")
-            }
+            className={selectedCalculator === "vlsm" ? "active" : ""}
+            onClick={() => handleCalculatorChange("vlsm")}
             title="VLSM Calculator"
             aria-label="VLSM Calculator"
           >
@@ -151,14 +109,8 @@ function Home() {
 
           <button
             type="button"
-            className={
-              selectedCalculator === "ipv4"
-                ? "active"
-                : ""
-            }
-            onClick={() =>
-              handleCalculatorChange("ipv4")
-            }
+            className={selectedCalculator === "ipv4" ? "active" : ""}
+            onClick={() => handleCalculatorChange("ipv4")}
             title="IPv4 Calculator"
             aria-label="IPv4 Calculator"
           >
@@ -168,14 +120,8 @@ function Home() {
 
           <button
             type="button"
-            className={
-              selectedCalculator === "more-tools"
-                ? "active"
-                : ""
-            }
-            onClick={() =>
-              handleCalculatorChange("more-tools")
-            }
+            className={selectedCalculator === "more-tools" ? "active" : ""}
+            onClick={() => handleCalculatorChange("more-tools")}
             title="More Tools"
             aria-label="More Tools"
           >
@@ -197,8 +143,7 @@ function Home() {
                 <div>
                   <h1>More Networking Tools</h1>
                   <p>
-                    Additional tools for IP addressing and
-                    network calculations.
+                    Additional tools for IP addressing and network calculations.
                   </p>
                 </div>
               </div>
@@ -247,36 +192,24 @@ function Home() {
                 <div className="mode-tabs">
                   <button
                     type="button"
-                    className={
-                      mode === "regular" ? "active" : ""
-                    }
-                    onClick={() =>
-                      handleModeChange("regular")
-                    }
+                    className={mode === "regular" ? "active" : ""}
+                    onClick={() => handleModeChange("regular")}
                   >
                     Regular
                   </button>
 
                   <button
                     type="button"
-                    className={
-                      mode === "hosts" ? "active" : ""
-                    }
-                    onClick={() =>
-                      handleModeChange("hosts")
-                    }
+                    className={mode === "hosts" ? "active" : ""}
+                    onClick={() => handleModeChange("hosts")}
                   >
                     By Hosts
                   </button>
 
                   <button
                     type="button"
-                    className={
-                      mode === "networks" ? "active" : ""
-                    }
-                    onClick={() =>
-                      handleModeChange("networks")
-                    }
+                    className={mode === "networks" ? "active" : ""}
+                    onClick={() => handleModeChange("networks")}
                   >
                     By Networks
                   </button>

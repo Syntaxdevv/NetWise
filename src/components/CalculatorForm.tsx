@@ -29,8 +29,7 @@ function CalculatorForm({
   setRequired,
   onCalculate,
 }: Props) {
-  const RequirementIcon =
-    mode === "hosts" ? Users : GitBranch;
+  const RequirementIcon = mode === "hosts" ? Users : GitBranch;
 
   return (
     <section className="calculator-form">
@@ -64,9 +63,7 @@ function CalculatorForm({
           <label>
             <RequirementIcon size={16} />
 
-            {mode === "hosts"
-              ? "Required Hosts"
-              : "Required Networks"}
+            {mode === "hosts" ? "Required Hosts" : "Required Networks"}
           </label>
 
           <input
@@ -74,11 +71,7 @@ function CalculatorForm({
             min="1"
             value={required}
             onChange={(e) => setRequired(e.target.value)}
-            placeholder={
-              mode === "hosts"
-                ? "e.g. 100, 50, 25, 10"
-                : "e.g. 4"
-            }
+            placeholder={mode === "hosts" ? "e.g. 100, 50, 25, 10" : "e.g. 4"}
           />
 
           {mode === "hosts" && (
@@ -89,11 +82,7 @@ function CalculatorForm({
         </div>
       )}
 
-      <button
-        className="calculate-button"
-        type="button"
-        onClick={onCalculate}
-      >
+      <button className="calculate-button" type="button" onClick={onCalculate}>
         <Calculator size={18} />
         Calculate Subnet
         <ArrowRight size={18} />

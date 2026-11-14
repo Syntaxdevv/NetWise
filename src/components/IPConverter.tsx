@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   Binary,
@@ -19,19 +18,21 @@ function ipv4ToBinary(ip: string): string {
     throw new Error("Enter a valid IPv4 address with 4 octets.");
   }
 
-  return octets.map((octet) => {
-    if (!/^\d+$/.test(octet)) {
-      throw new Error("IPv4 address must contain numbers only.");
-    }
+  return octets
+    .map((octet) => {
+      if (!/^\d+$/.test(octet)) {
+        throw new Error("IPv4 address must contain numbers only.");
+      }
 
-    const value = Number(octet);
+      const value = Number(octet);
 
-    if (value < 0 || value > 255) {
-      throw new Error("Each IPv4 octet must be between 0 and 255.");
-    }
+      if (value < 0 || value > 255) {
+        throw new Error("Each IPv4 octet must be between 0 and 255.");
+      }
 
-    return value.toString(2).padStart(8, "0");
-  }).join(".");
+      return value.toString(2).padStart(8, "0");
+    })
+    .join(".");
 }
 
 function IPConverter() {
@@ -48,9 +49,7 @@ function IPConverter() {
       setCopied(false);
     } catch (err) {
       setResult("");
-      setError(
-        err instanceof Error ? err.message : "Conversion failed."
-      );
+      setError(err instanceof Error ? err.message : "Conversion failed.");
     }
   }
 
@@ -79,17 +78,12 @@ function IPConverter() {
 
         <div className="ip-binary-heading-text">
           <h2>IPv4 to Binary Converter</h2>
-          <p>
-            Convert IPv4 addresses into their 32-bit binary representation.
-          </p>
+          <p>Convert IPv4 addresses into their 32-bit binary representation.</p>
         </div>
       </div>
 
       <div className="extra-calculator-form">
-        <label
-          htmlFor="ipv4-binary-input"
-          className="ip-binary-label"
-        >
+        <label htmlFor="ipv4-binary-input" className="ip-binary-label">
           <Globe size={17} />
           <span>IPv4 Address</span>
         </label>
@@ -118,9 +112,7 @@ function IPConverter() {
 
       <div className="form-note ip-binary-note">
         <Info size={16} />
-        <span>
-          Enter a valid IPv4 address with four octets.
-        </span>
+        <span>Enter a valid IPv4 address with four octets.</span>
       </div>
 
       {error && (

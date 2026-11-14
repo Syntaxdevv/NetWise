@@ -1,11 +1,5 @@
-
 import { useState } from "react";
-import {
-  GitBranch,
-  Calculator,
-  Plus,
-  Trash2,
-} from "lucide-react";
+import { GitBranch, Calculator, Plus, Trash2 } from "lucide-react";
 
 import { calculateSubnets } from "../utils/subnetCalculator";
 import type { CalculationResult } from "../types/subnet";
@@ -32,9 +26,7 @@ function maskToCidr(mask: string): number {
   if (
     numbers.some(
       (value, index) =>
-        !/^\d+$/.test(octets[index]) ||
-        value < 0 ||
-        value > 255
+        !/^\d+$/.test(octets[index]) || value < 0 || value > 255,
     )
   ) {
     throw new Error("Please enter a valid subnet mask.");
@@ -62,9 +54,7 @@ function validateIPv4(ip: string): void {
 
   const valid = octets.every(
     (octet) =>
-      /^\d+$/.test(octet) &&
-      Number(octet) >= 0 &&
-      Number(octet) <= 255
+      /^\d+$/.test(octet) && Number(octet) >= 0 && Number(octet) <= 255,
   );
 
   if (!valid) {
@@ -83,8 +73,7 @@ function VLSM() {
 
   const [nextId, setNextId] = useState(3);
 
-  const [results, setResults] =
-    useState<CalculationResult | null>(null);
+  const [results, setResults] = useState<CalculationResult | null>(null);
 
   const [resultNames, setResultNames] = useState<string[]>([]);
   const [error, setError] = useState("");
@@ -92,14 +81,12 @@ function VLSM() {
   function updateRequirement(
     id: number,
     field: "name" | "hosts",
-    value: string
+    value: string,
   ) {
     setRequirements((current) =>
       current.map((item) =>
-        item.id === id
-          ? { ...item, [field]: value }
-          : item
-      )
+        item.id === id ? { ...item, [field]: value } : item,
+      ),
     );
   }
 
@@ -120,9 +107,7 @@ function VLSM() {
   }
 
   function removeSubnet(id: number) {
-    setRequirements((current) =>
-      current.filter((item) => item.id !== id)
-    );
+    setRequirements((current) => current.filter((item) => item.id !== id));
 
     setResults(null);
     setResultNames([]);
@@ -147,9 +132,7 @@ function VLSM() {
       const baseCidr = maskToCidr(cleanMask);
 
       if (baseCidr < 1 || baseCidr > 30) {
-        throw new Error(
-          "Please use a subnet mask from /1 to /30 for VLSM."
-        );
+        throw new Error("Please use a subnet mask from /1 to /30 for VLSM.");
       }
 
       if (requirements.length === 0) {
@@ -172,7 +155,7 @@ function VLSM() {
 
         if (!Number.isSafeInteger(hosts) || hosts <= 0) {
           throw new Error(
-            `Required hosts for ${name} must be a positive whole number.`
+            `Required hosts for ${name} must be a positive whole number.`,
           );
         }
 
@@ -185,37 +168,30 @@ function VLSM() {
 
       // VLSM allocates the largest host requirement first.
       const sortedRequirements = [...preparedRequirements].sort(
-        (a, b) => b.hosts - a.hosts
+        (a, b) => b.hosts - a.hosts,
       );
 
       const calculated = calculateSubnets(
         `${cleanNetwork}/${baseCidr}`,
         sortedRequirements.map((item) => item.hosts),
-        "hosts"
+        "hosts",
       );
 
-      if (
-        calculated.subnets.length !==
-        sortedRequirements.length
-      ) {
+      if (calculated.subnets.length !== sortedRequirements.length) {
         throw new Error(
-          "Not all LAN requirements were allocated. Try a larger network."
+          "Not all LAN requirements were allocated. Try a larger network.",
         );
       }
 
       setResults(calculated);
-      setResultNames(
-        sortedRequirements.map((item) => item.name)
-      );
+      setResultNames(sortedRequirements.map((item) => item.name));
       setError("");
     } catch (err) {
       setResults(null);
       setResultNames([]);
 
       setError(
-        err instanceof Error
-          ? err.message
-          : "Unable to calculate VLSM."
+        err instanceof Error ? err.message : "Unable to calculate VLSM.",
       );
     }
   }
@@ -230,9 +206,7 @@ function VLSM() {
 
           <div>
             <h1>VLSM Calculator</h1>
-            <p>
-              Calculate variable-length subnet masks for multiple networks.
-            </p>
+            <p>Calculate variable-length subnet masks for multiple networks.</p>
           </div>
         </div>
 
@@ -261,9 +235,7 @@ function VLSM() {
 
           <div className="vlsm-fields">
             <div className="vlsm-field">
-              <label htmlFor="vlsm-network">
-                Network Address
-              </label>
+              <label htmlFor="vlsm-network">Network Address</label>
 
               <input
                 id="vlsm-network"
@@ -278,9 +250,7 @@ function VLSM() {
             </div>
 
             <div className="vlsm-field">
-              <label htmlFor="vlsm-mask">
-                Original Subnet Mask
-              </label>
+              <label htmlFor="vlsm-mask">Original Subnet Mask</label>
 
               <input
                 id="vlsm-mask"
@@ -299,28 +269,19 @@ function VLSM() {
             <div className="vlsm-section-heading">
               <div>
                 <h2>Subnet Requirements</h2>
-                <p>
-                  Add each LAN and its required number of hosts.
-                </p>
+                <p>Add each LAN and its required number of hosts.</p>
               </div>
             </div>
 
             <div className="vlsm-requirement-list">
               {requirements.map((item) => (
-                <div
-                  className="vlsm-requirement-row"
-                  key={item.id}
-                >
+                <div className="vlsm-requirement-row" key={item.id}>
                   <input
                     type="text"
                     aria-label={`LAN ${item.id} name`}
                     value={item.name}
                     onChange={(event) =>
-                      updateRequirement(
-                        item.id,
-                        "name",
-                        event.target.value
-                      )
+                      updateRequirement(item.id, "name", event.target.value)
                     }
                     placeholder="LAN name"
                   />
@@ -331,11 +292,7 @@ function VLSM() {
                     aria-label={`Required hosts for ${item.name}`}
                     value={item.hosts}
                     onChange={(event) =>
-                      updateRequirement(
-                        item.id,
-                        "hosts",
-                        event.target.value
-                      )
+                      updateRequirement(item.id, "hosts", event.target.value)
                     }
                     placeholder="Required hosts"
                   />
@@ -375,11 +332,11 @@ function VLSM() {
           </div>
         </section>
 
-       <VLSMResults
-  results={results}
-  subnetNames={resultNames}
-  originalCidr={maskToCidr(subnetMask)}
-/>
+        <VLSMResults
+          results={results}
+          subnetNames={resultNames}
+          originalCidr={maskToCidr(subnetMask)}
+        />
       </div>
     </>
   );

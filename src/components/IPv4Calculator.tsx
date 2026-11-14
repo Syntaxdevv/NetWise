@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "../css/IPv4Calculator.css";
 
@@ -33,9 +32,7 @@ function ipToNumber(ip: string): number {
     const value = Number(part);
 
     if (value < 0 || value > 255) {
-      throw new Error(
-        "Each IPv4 octet must be between 0 and 255."
-      );
+      throw new Error("Each IPv4 octet must be between 0 and 255.");
     }
 
     result = result * 256 + value;
@@ -59,7 +56,7 @@ function getDefaultClassCidr(firstOctet: number): number {
   if (firstOctet >= 192 && firstOctet <= 223) return 24;
 
   throw new Error(
-    "Borrowed bits are not applicable to Class D or Class E addresses."
+    "Borrowed bits are not applicable to Class D or Class E addresses.",
   );
 }
 
@@ -67,9 +64,7 @@ function calculateIPv4(input: string): IPv4Result {
   const parts = input.trim().split("/");
 
   if (parts.length !== 2) {
-    throw new Error(
-      "Enter an IPv4 address with CIDR, e.g. 192.168.10.25/24."
-    );
+    throw new Error("Enter an IPv4 address with CIDR, e.g. 192.168.10.25/24.");
   }
 
   const address = parts[0].trim();
@@ -95,29 +90,20 @@ function calculateIPv4(input: string): IPv4Result {
   const totalAddresses = Math.pow(2, 32 - cidr);
   const blockSize = totalAddresses;
 
-  const networkNumber =
-    Math.floor(ipNumber / blockSize) * blockSize;
+  const networkNumber = Math.floor(ipNumber / blockSize) * blockSize;
 
-  const broadcastNumber =
-    networkNumber + blockSize - 1;
+  const broadcastNumber = networkNumber + blockSize - 1;
 
-  const maskNumber =
-    cidr === 0
-      ? 0
-      : 4294967296 - Math.pow(2, 32 - cidr);
+  const maskNumber = cidr === 0 ? 0 : 4294967296 - Math.pow(2, 32 - cidr);
 
   const subnetMask = numberToIp(maskNumber);
 
   const maskOctets = subnetMask.split(".").map(Number);
 
-  const interestingOctet = maskOctets.find(
-    (octet) => octet !== 255
-  );
+  const interestingOctet = maskOctets.find((octet) => octet !== 255);
 
   const magicNumber =
-    interestingOctet === undefined
-      ? 1
-      : 256 - interestingOctet;
+    interestingOctet === undefined ? 1 : 256 - interestingOctet;
 
   let firstHost = "";
   let lastHost = "";
@@ -169,7 +155,7 @@ function IPv4Calculator() {
       setError(
         err instanceof Error
           ? err.message
-          : "Unable to calculate IPv4 address."
+          : "Unable to calculate IPv4 address.",
       );
     }
   }
@@ -193,9 +179,7 @@ function IPv4Calculator() {
         </div>
 
         <div className="form-field">
-          <label htmlFor="ipv4-address">
-            IPv4 Address / CIDR
-          </label>
+          <label htmlFor="ipv4-address">IPv4 Address / CIDR</label>
 
           <input
             id="ipv4-address"
@@ -253,9 +237,7 @@ function IPv4Calculator() {
           <div className="empty-results">
             <div className="empty-icon">⌘</div>
             <h3>No results yet</h3>
-            <p>
-              Enter your IPv4 address and CIDR to calculate.
-            </p>
+            <p>Enter your IPv4 address and CIDR to calculate.</p>
           </div>
         ) : (
           <>
@@ -304,16 +286,12 @@ function IPv4Calculator() {
 
               <div className="summary-card">
                 <span>Total IP Addresses</span>
-                <strong>
-                  {result.totalAddresses.toLocaleString()}
-                </strong>
+                <strong>{result.totalAddresses.toLocaleString()}</strong>
               </div>
 
               <div className="summary-card">
                 <span>Usable Hosts</span>
-                <strong>
-                  {result.usableHosts.toLocaleString()}
-                </strong>
+                <strong>{result.usableHosts.toLocaleString()}</strong>
               </div>
             </div>
           </>

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Sun, Moon, Network } from "lucide-react";
 import "../css/Navbar.css";
@@ -12,7 +11,7 @@ function Navbar() {
     setDarkMode(newTheme);
     document.documentElement.setAttribute(
       "data-theme",
-      newTheme ? "dark" : "light"
+      newTheme ? "dark" : "light",
     );
   }
 

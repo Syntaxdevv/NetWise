@@ -1,15 +1,8 @@
-
 import { useState } from "react";
 import "../css/ExtraCalculator.css";
 import "../css/CalculatorShared.css";
 import "../css/CIDRCalculator.css";
-import {
-  Binary,
-  Network,
-  Calculator,
-  Info,
-  Hash,
-} from "lucide-react";
+import { Binary, Network, Calculator, Info, Hash } from "lucide-react";
 
 interface CIDRResult {
   prefix: number;
@@ -32,9 +25,7 @@ function CIDRCalculator() {
 
       // Accept both 24 and /24
       if (!/^\/?\d+$/.test(value)) {
-        throw new Error(
-          "Enter a valid CIDR prefix, e.g. 24 or /24."
-        );
+        throw new Error("Enter a valid CIDR prefix, e.g. 24 or /24.");
       }
 
       const prefix = Number(value.replace("/", ""));
@@ -43,12 +34,9 @@ function CIDRCalculator() {
         throw new Error("CIDR prefix must be between 0 and 32.");
       }
 
-      const mask =
-        prefix === 0
-          ? 0
-          : (0xffffffff << (32 - prefix)) >>> 0;
+      const mask = prefix === 0 ? 0 : (0xffffffff << (32 - prefix)) >>> 0;
 
-      const wildcard = (~mask) >>> 0;
+      const wildcard = ~mask >>> 0;
 
       const toIP = (value: number) =>
         [
@@ -62,11 +50,7 @@ function CIDRCalculator() {
       const totalAddresses = 2 ** hostBits;
 
       const usableHosts =
-        prefix === 32
-          ? 1
-          : prefix === 31
-            ? 2
-            : Math.max(0, totalAddresses - 2);
+        prefix === 32 ? 1 : prefix === 31 ? 2 : Math.max(0, totalAddresses - 2);
 
       setResult({
         prefix,
@@ -81,11 +65,7 @@ function CIDRCalculator() {
       setError("");
     } catch (err) {
       setResult(null);
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Calculation failed."
-      );
+      setError(err instanceof Error ? err.message : "Calculation failed.");
     }
   }
 
@@ -106,8 +86,8 @@ function CIDRCalculator() {
           </h2>
 
           <p>
-            Calculate subnet mask, wildcard mask, network bits,
-            host bits, and address capacity using CIDR prefix.
+            Calculate subnet mask, wildcard mask, network bits, host bits, and
+            address capacity using CIDR prefix.
           </p>
         </div>
       </div>
@@ -153,11 +133,7 @@ function CIDRCalculator() {
         Enter only a CIDR prefix from 0 to 32. Example: /24.
       </div>
 
-      {error && (
-        <div className="extra-error">
-          {error}
-        </div>
-      )}
+      {error && <div className="extra-error">{error}</div>}
 
       {result && (
         <div className="extra-results">
@@ -167,40 +143,13 @@ function CIDRCalculator() {
           </h3>
 
           <div className="extra-results-grid">
-            <Result
-              label="CIDR Prefix"
-              value={`/${result.prefix}`}
-            />
-
-            <Result
-              label="Subnet Mask"
-              value={result.subnetMask}
-            />
-
-            <Result
-              label="Wildcard Mask"
-              value={result.wildcardMask}
-            />
-
-            <Result
-              label="Network Bits"
-              value={`${result.networkBits} bits`}
-            />
-
-            <Result
-              label="Host Bits"
-              value={`${result.hostBits} bits`}
-            />
-
-            <Result
-              label="Total Addresses"
-              value={result.totalAddresses}
-            />
-
-            <Result
-              label="Usable Hosts"
-              value={result.usableHosts}
-            />
+            <Result label="CIDR Prefix" value={`/${result.prefix}`} />
+            <Result label="Subnet Mask" value={result.subnetMask} />
+            <Result label="Wildcard Mask" value={result.wildcardMask} />
+            <Result label="Network Bits" value={`${result.networkBits} bits`} />
+            <Result label="Host Bits" value={`${result.hostBits} bits`} />
+            <Result label="Total Addresses" value={result.totalAddresses} />
+            <Result label="Usable Hosts" value={result.usableHosts} />
           </div>
         </div>
       )}
@@ -208,13 +157,7 @@ function CIDRCalculator() {
   );
 }
 
-function Result({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
+function Result({ label, value }: { label: string; value: string }) {
   return (
     <div className="extra-result-item">
       <span>{label}</span>
